@@ -2,8 +2,7 @@ import * as XLSX from 'xlsx';
 import type { Transaction } from '../types';
 
 export const loadData = async (): Promise<Transaction[]> => {
-  const baseUrl = import.meta.env.BASE_URL || '/';
-  const response = await fetch(`${baseUrl}data.xlsx`);
+  const response = await fetch('data.xlsx');
   const arrayBuffer = await response.arrayBuffer();
   const workbook = XLSX.read(arrayBuffer, { type: 'array', cellDates: true });
   
